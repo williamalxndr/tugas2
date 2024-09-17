@@ -1,18 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Jual Beli</h1>
+{% extends "base.html" %}
+{% block content %}
+<h1>Jual Beli</h1>
 
-    <h5>Nama</h5>
-    <p>{{ nama }}r</p>
-    <h5>NPM</h5>
-    <p>{{ npm }}</p>
-    <h5>Kelas</h5>
-    <p>{{ kelas }}</p>
-</body>
-</html>
+<h5>Nama</h5>
+<p>{{ nama }}</p>
+<h5>NPM</h5>
+<p>{{ npm }}</p>
+<h5>Kelas</h5>
+<p>{{ kelas }}</p>
+
+<h5>Product: </h5>
+{% if not product_entries %}
+<p>Belum ada data</p>
+{% else %}
+<table>
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Description</th>
+    <th>Stock</th>
+    <th>Ratings</th>
+  </tr>
+
+  {% for product_entry in product_entries %}
+  <tr>
+    <td>{{product_entry.name}}</td>
+    <td>{{product_entry.price}}</td>
+    <td>{{product_entry.description}}</td>
+    <td>{{product_entry.stock}}</td>
+    <td>{{product_entry.ratings}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+<br />
+
+<a href="{% url 'create_new_product' %}">
+  <button>Add New Product</button>
+</a>
+
+{% endblock content %}

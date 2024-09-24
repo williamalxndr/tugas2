@@ -36,3 +36,17 @@ TUGAS 3
 Screenshot Postman: 
 ![Screenshot Postman JSON](screenshot-postman-json.png)
 ![Screenshot Postman XML](screenshot-postman-xml.png)
+
+TUGAS 4
+
+1.  Apa perbedaan antara HttpResponseRedirect() dan redirect()
+    HttpResponseRedirect() hanya bisa menerima argumen berupa url, sedangkan redirect() dapat menerima model, view, atau url sebagai argumen. Keduanya sama sama melakukan hal yang sama, yaitu mengalihkan user ke url lain.
+2.  Jelaskan cara kerja penghubungan model Product dengan User!
+    Penghubungan model Product dengan User dilakukan dengan menggunakan ForeignKey. ForeignKey adalah suatu relasi yang memungkinkan kita menghubungkan satu ke banyak. Dimana disini satu user dapat memiliki banyak product. Setiap kali form disubmit, database akan menerima data user siapa yang mengirim form tersebut, dan user itulah yang akan dijadikan milik dari product.
+3. Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep  tersebut.
+    Authentication adalah proses yang memverifikasi siapa user yang ingin mengakses website kita, apakah user ini sudah terdaftar dalam database kita. Sedangkan authorization adalah proses yang memverifikasi apakah user dapat melakukan aksi tertentu. Yang terjadi ketika user login, pertama saat user mengklik submit/login pada halaman login, data username dan password akan dicocokkan dengan yang ada di database, jika terverifikasi, user akan dialihkan ke halaman lain. Lalu, terjadi authorization, sistem akan menggunakan authorization untuk memastikan tindakan apa saja yang boleh dilakukan user, semisal apakah boleh membuat blog baru atau hanya boleh sekedar melihat lihat. Django sudah menyediakan beberapa built in views yang bisa digunakan untuk authentication dan authorization seperti login, logout, password reset. Django mengimplementasikan authentication dan authorization ketika user log in, django akan membuat session id dan cookies untuk user itu dan dari situ django akan melihat akses apa yang bisa dilakukan user (authorization).
+    (source: https://www.linkedin.com/pulse/understanding-djangos-authentication-system-guide-rashid-mahmood)
+4.  Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?
+    Django mengingat pengguna yang telah login menggunakan session id kemudian django menyimpan session id dalam bentuk cookie. Setiap kali pengguna mengakses halaman itu, cookie dikirim bersama request ke server. Kegunaan lain dari cookies: authentication otomatis (Remember me), menyimpan preferensi pengguna, keranjang belanja. Tidak semua cookies aman, contoh ancamannya adalah XSS, jika sebuah website rentan terhadap XSS, penyerang dapat menyisipkan skrip berbahaya ke halaman web dan mencuri cookies pengguna. Cookies yang dicuri dapat berupa informasi sensitif pengguna yang dapat digunakan untuk mengambil akun pengguna.
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+    Menggunakan ppt dari scele, internet(stackoverflow, dokumentasi django), tutorial 3

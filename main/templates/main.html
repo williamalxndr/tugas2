@@ -15,7 +15,6 @@
 {% else %}
 <table>
   <tr>
-    <th></th>
     <th>Name</th>
     <th>Price</th>
     <th>Description</th>
@@ -40,5 +39,10 @@
 <a href="{% url 'main:create_new_product' %}">
   <button>Add New Product</button>
 </a>
+
+<a href="{% url 'main:logout' %}">
+  <button>Logout</button>
+</a>
+<h5>Sesi terakhir login: {{ last_login }}</h5>
 
 {% endblock content %}

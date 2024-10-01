@@ -12,6 +12,16 @@ class Product(models.Model):
     description = models.TextField()
     stock = models.IntegerField()
     ratings = models.FloatField()
+    category_choices = [
+        ("elektronik", "Elektronik"),
+        ("fashion", "Fashion & Style"), 
+        ("makanan", "Makanan & Minuman"),
+        ("furniture", "Furniture"),
+        ("otomotif", "Otomotif"),
+        ("alattulis", "Alat Tulis"),
+        ("others", "Others")
+    ]
+    category = models.CharField(max_length=20, choices=category_choices)
 
     @property
     def is_available(self):

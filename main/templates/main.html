@@ -1,48 +1,25 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block meta %}
+<title>Jual Beli</title>
+{% endblock meta %}
+
+
 {% block content %}
-<h1>Jual Beli</h1>
+{% include "navbar.html" %}
 
-<h5>Nama</h5>
-<p>{{ nama }}</p>
-<h5>NPM</h5>
-<p>{{ npm }}</p>
-<h5>Kelas</h5>
-<p>{{ kelas }}</p>
+<div class="overflow-x-hidden px-4 md:px-8 pb-8 pt-24 min-h-screen bg-gray-100 flex flex-col">
+  <div class="p-2 mb-6 relative">
+    <div class="relative grid grid-cols-1 z-30 md:grid-cols-3 gap-8">
+      {% include "card_info.html" with title='Name' value=nama %}
+      {% include "card_info.html" with title='NPM' value=npm %}
+      {% include "card_info.html" with title='Kelas' value=kelas %}
 
-<h5>Product: </h5>
-{% if not product_entries %}
-<p>Belum ada data</p>
-{% else %}
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Description</th>
-    <th>Stock</th>
-    <th>Ratings</th>
-  </tr>
+    </div>
+  </div>
+</div>
 
-  {% for product_entry in product_entries %}
-  <tr>
-    <td>{{product_entry.name}}</td>
-    <td>{{product_entry.price}}</td>
-    <td>{{product_entry.description}}</td>
-    <td>{{product_entry.stock}}</td>
-    <td>{{product_entry.ratings}}</td>
-  </tr>
-  {% endfor %}
-</table>
-{% endif %}
-
-<br />
-
-<a href="{% url 'main:create_new_product' %}">
-  <button>Add New Product</button>
-</a>
-
-<a href="{% url 'main:logout' %}">
-  <button>Logout</button>
-</a>
-<h5>Sesi terakhir login: {{ last_login }}</h5>
+<p>Sesi terakhir login: {{ last_login }}<p>
 
 {% endblock content %}

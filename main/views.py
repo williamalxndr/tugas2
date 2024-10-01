@@ -31,7 +31,7 @@ def create_new_product(request):
         product_entry = form.save(commit=False)
         product_entry.user = request.user
         product_entry.save()
-        return redirect("main:show_main")
+        return redirect("main:show_product")
     
     context = {"form": form}
     return render(request, "create_new_product.html", context)
@@ -89,7 +89,7 @@ def logout_user(request):
 def delete_product(request, id):
     product = Product.objects.get(pk=id)
     product.delete()
-    return HttpResponseRedirect(reverse("main:show_main"))
+    return HttpResponseRedirect(reverse("main:show_product"))
 
 def edit_product(request, id):
     product = Product.objects.get(pk=id)
@@ -97,7 +97,7 @@ def edit_product(request, id):
 
     if form.is_valid() and request.method == "POST":
         form.save()
-        return HttpResponseRedirect(reverse("main:show_main"))
+        return HttpResponseRedirect(reverse("main:show_product"))
     
     context = {"form": form}
     return render(request, "edit_product.html", context)

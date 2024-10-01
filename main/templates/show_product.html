@@ -6,76 +6,80 @@
 {% block content %}
 {% include "navbar.html" %}
 
-<div class="overflow-x-hidden px-4 md:px-8 pb-8 pt-24 min-h-screen bg-gray-100 flex flex-col">
+    <div class="overflow-x-hidden px-4 md:px-8 pb-8 pt-24 min-h-screen bg-gray-100 flex flex-col">
 
-    <!-- Tombol untuk memfilter berdasarkan category -->
-    <div class="flex space-x-4">
+        <!-- Tombol untuk memfilter berdasarkan category -->
+        <div class="flex space-x-4">
+            
+            <a href="{% url 'main:show_product' %}"><div class="bg-gray-200 mx-2 px-4 py-1 border border-gray-400 rounded-lg flex items-center justify-center {% if category == 'all' %} bg-gray-500 text-white {% else %} hover:bg-gray-300 {% endif %}">
+                <p class="text-center">All</p>
+            </div></a>
+
+            <a href="{% url 'main:show_product_by_category' 'elektronik' %}"><div class="bg-gray-200 mx-2 px-4 py-1 border border-gray-400 rounded-lg flex items-center justify-center {% if category == 'elektronik' %} bg-gray-500 text-white {% else %} hover:bg-gray-300 {% endif %}">
+                <p class="text-center">Elektronik</p>
+            </div></a>
+
+            <a href="{% url 'main:show_product_by_category' 'fashion' %}"><div class="bg-gray-200 mx-2 px-4 py-1 border border-gray-400 rounded-lg flex items-center justify-center {% if category == 'fashion' %} bg-gray-500 text-white {% else %} hover:bg-gray-300 {% endif %}">
+                <p class="text-center">Fashion & Style</p>
+            </div></a>
+
+            <a href="{% url 'main:show_product_by_category' 'makanan' %}"><div class="bg-gray-200 mx-2 px-4 py-1 border border-gray-400 rounded-lg flex items-center justify-center {% if category == 'makanan' %} bg-gray-500 text-white {% else %} hover:bg-gray-300 {% endif %}">
+                <p class="text-center">Makanan & Minuman</p>
+            </div></a>
+
+            <a href="{% url 'main:show_product_by_category' 'furniture' %}"><div class="bg-gray-200 mx-2 px-4 py-1 border border-gray-400 rounded-lg flex items-center justify-center {% if category == 'furniture' %} bg-gray-500 text-white {% else %} hover:bg-gray-300 {% endif %}">
+                <p class="text-center">Furniture</p>
+            </div></a>
+
+            <a href="{% url 'main:show_product_by_category' 'otomotif' %}"><div class="bg-gray-200 mx-2 px-4 py-1 border border-gray-400 rounded-lg flex items-center justify-center {% if category == 'otomotif' %} bg-gray-500 text-white {% else %} hover:bg-gray-300 {% endif %}">
+                <p class="text-center">Otomotif</p></a>
+            </div></a>
+
+            <a href="{% url 'main:show_product_by_category' 'alattulis' %}"><div class="bg-gray-200 mx-4 px-4 py-1 border border-gray-400 rounded-lg flex items-center justify-center {% if category == 'alattulis' %} bg-gray-500 text-white {% else %} hover:bg-gray-300 {% endif %}">
+                <a href="{% url 'main:show_product_by_category' 'alattulis' %}"><p class="text-center">Alat Tulis</p>
+            </div></a>
+
+            <a href="{% url 'main:show_product_by_category' 'others' %}"><div class="bg-gray-200 mx-4 px-4 py-1 border border-gray-400 rounded-lg flex items-center justify-center {% if category == 'others' %} bg-gray-500 text-white {% else %} hover:bg-gray-300 {% endif %}">
+                <p class="text-center">Others</p>
+            </div></a>
+
+        </div>
+
+        <br>
+
+        {% if not product_entries %}
+        <div class="mt-12 ml-16 mb-0">
+            <a href="{% url 'main:create_new_product' %}" class="inline-flex bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+            </a>
+        </div>
+
+        <div class="flex flex-col items-center justify-center min-h-[24rem] p-6">
+            <img src="{% static 'image/data-not-found.png' %}" alt="not found" class=""/>
+            <p class="text-center text-gray-600 mt-4">Belum ada produk disini</p>
+        </div>
+        {% else %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for product_entry in product_entries %}
+                {% include 'card_product.html' with product_entry=product_entry %}
+            {% endfor %}
+            <div class="flex items-center justify-center min-h-[200px]">
+                <a href="{% url 'main:create_new_product' %}" class="inline-flex bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+        {% endif %}
+
+
+
+
         
-        <div class="bg-gray-200 mx-2 px-4 py-1 border border-gray-400 rounded-lg flex items-center justify-center {% if category == 'all' %} bg-gray-500 text-white {% else %} hover:bg-gray-300 {% endif %}">
-            <a href="{% url 'main:show_product' %}"><p class="text-center">All</p></a>
-        </div>
-
-        <div class="bg-gray-200 mx-2 px-4 py-1 border border-gray-400 rounded-lg flex items-center justify-center {% if category == 'elektronik' %} bg-gray-500 text-white {% else %} hover:bg-gray-300 {% endif %}">
-            <a href="{% url 'main:show_product_by_category' 'elektronik' %}"><p class="text-center">Elektronik</p></a>
-        </div>
-
-        <div class="bg-gray-200 mx-2 px-4 py-1 border border-gray-400 rounded-lg flex items-center justify-center {% if category == 'fashion' %} bg-gray-500 text-white {% else %} hover:bg-gray-300 {% endif %}">
-            <a href="{% url 'main:show_product_by_category' 'fashion' %}"><p class="text-center">Fashion & Style</p></a>
-        </div>
-
-        <div class="bg-gray-200 mx-2 px-4 py-1 border border-gray-400 rounded-lg flex items-center justify-center {% if category == 'makanan' %} bg-gray-500 text-white {% else %} hover:bg-gray-300 {% endif %}">
-            <a href="{% url 'main:show_product_by_category' 'makanan' %}"><p class="text-center">Makanan & Minuman</p></a>
-        </div>
-
-        <div class="bg-gray-200 mx-2 px-4 py-1 border border-gray-400 rounded-lg flex items-center justify-center {% if category == 'furniture' %} bg-gray-500 text-white {% else %} hover:bg-gray-300 {% endif %}">
-            <a href="{% url 'main:show_product_by_category' 'furniture' %}"><p class="text-center">Furniture</p></a>
-        </div>
-
-        <div class="bg-gray-200 mx-2 px-4 py-1 border border-gray-400 rounded-lg flex items-center justify-center {% if category == 'otomotif' %} bg-gray-500 text-white {% else %} hover:bg-gray-300 {% endif %}">
-            <a href="{% url 'main:show_product_by_category' 'otomotif' %}"><p class="text-center">Otomotif</p></a>
-        </div>
-
-        <div class="bg-gray-200 mx-4 px-4 py-1 border border-gray-400 rounded-lg flex items-center justify-center {% if category == 'alattulis' %} bg-gray-500 text-white {% else %} hover:bg-gray-300 {% endif %}">
-            <a href="{% url 'main:show_product_by_category' 'alattulis' %}"><p class="text-center">Alat Tulis</p></a>
-        </div>
-
-        <div class="bg-gray-200 mx-4 px-4 py-1 border border-gray-400 rounded-lg flex items-center justify-center {% if category == 'others' %} bg-gray-500 text-white {% else %} hover:bg-gray-300 {% endif %}">
-            <a href="{% url 'main:show_product_by_category' 'others' %}"><p class="text-center">Others</p></a>
-        </div>
-
     </div>
-
-    <br>
-
-
-
-    <!-- Show products cards -->
-    {% if not product_entries %}
-    <div class="flex flex-col items-center justify-center min-h-[24rem] p-6">
-        <img src="{% static 'image/sedih-banget.png' %}" alt="Sad face" class="w-32 h-32 mb-4"/>
-        <p class="text-center text-gray-600 mt-4">Belum ada data</p>
-    </div>
-    {% else %}
-    <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 w-full">
-        {% for product_entry in product_entries %}
-            {% include 'card_product.html' with product_entry=product_entry %}
-        {% endfor %}
-    </div>
-    {% endif %}
-
-
-    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2">
-        <a href="{% url 'main:create_new_product' %}" class="bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-600">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-            </svg>
-        </a>
-    </div>
-
-
-
-    
-</div>
 
 
 {% endblock content %}

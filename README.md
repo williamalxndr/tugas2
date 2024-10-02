@@ -50,3 +50,22 @@ TUGAS 4
     Django mengingat pengguna yang telah login menggunakan session id kemudian django menyimpan session id dalam bentuk cookie. Setiap kali pengguna mengakses halaman itu, cookie dikirim bersama request ke server. Kegunaan lain dari cookies: authentication otomatis (Remember me), menyimpan preferensi pengguna, keranjang belanja. Tidak semua cookies aman, contoh ancamannya adalah XSS, jika sebuah website rentan terhadap XSS, penyerang dapat menyisipkan skrip berbahaya ke halaman web dan mencuri cookies pengguna. Cookies yang dicuri dapat berupa informasi sensitif pengguna yang dapat digunakan untuk mengambil akun pengguna.
 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
     Menggunakan ppt dari scele, internet(stackoverflow, dokumentasi django), tutorial 3
+
+
+TUGAS 5
+1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+    1. Urutan prioritas tertinggi adalah jika elemen css diikuti !important, contoh: color: red !important;
+    2. Urutan prioritas tertinggi kedua adalah inline style, ini artinya elemen css dibuat pada tag html. Contoh: <div style="color: blue; text-align: center;"> Hal ini dikarenakan style pada tag html akan meng-overwrite style sebelumnya karena css diload di awal.
+    3. ID selector, selector menggunakan id (#). Contoh: #btn-1 {color: red;}
+    4. class selector, selector menggunakan class (.). Contoh: .box {color: blue}
+2.  Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!
+    Responsive design berguna agar pengguna dapat mengakses aplikasi web dalam berbagai perangkat dengan ukuran layar yang berbeda beda. Hal ini dapat meningkatkan pengalaman pengguna. Contoh aplikasi yang sudah menerapkan responsive design: twitter, youtube. Belum menerapkan responsive design: https://getbootstrap.com/docs/3.4/examples/non-responsive/
+
+3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+    Margin adalah ruang di luar elemen, contoh implementasinya adalah untuk mengatur jarak antara elemen tersebut dengan elemen lain di sekitarnya. Border adalah elemen yang mengelilingi content, contoh implementasinya untuk batas visual untuk memudahkan visualisasi untuk mengatur layout. Padding adalah elemen yang mengatur jarak antara content ke border, contoh implementasi nya pada button, jika kita ingin text dalam button agar tidak terlalu mepet dengan kotak button nya, kita dapat memperbesar paddingnya.
+
+4. Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+    Flexbox adalah model layout satu dimensi yang memungkinkan elemen dalam sebuah kontainer untuk beradaptasi dengan ruang yang tersedia. Elemen dapat diatur dalam satu baris (horizontal) atau satu kolom (vertikal). Grid layout adalah model layout dua dimensi yang memungkinkan pengaturan elemen dalam baris dan kolom.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+    Saya menggunakan dokumentasi tailwind untuk mengetahui class class yang dapat dipakai dan kegunaannya, dari youtube untuk melihat contoh implementasi, melihat tutorial untuk melihat template nya, dan menggunakan ai untuk proses debugging.

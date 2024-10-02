@@ -15,11 +15,18 @@
       {% include "card_info.html" with title='Name' value=nama %}
       {% include "card_info.html" with title='NPM' value=npm %}
       {% include "card_info.html" with title='Kelas' value=kelas %}
+    </div>
 
+    <div class="flex justify-center mt-16">
+      <a href="{% url 'main:show_product' %}" class="bg-blue-500 text-white font-semibold py-2 px-6 rounded hover:bg-blue-600 transition duration-200">
+        Go to Products
+      </a>
     </div>
   </div>
 </div>
 
-<p>Sesi terakhir login: {{ last_login }}<p>
+
+</div>
+
 
 {% endblock content %}

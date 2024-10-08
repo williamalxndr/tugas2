@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block meta %}
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.7/dist/purify.min.js"></script>
 {% endblock meta %}
 {% block content %}
 {% include "navbar.html" %}
@@ -165,21 +166,23 @@
             } else {
                 classNameString = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6";
                 productEntries.forEach((item) => {
+                    const name = DOMPurify.sanitize(item.fields.name);
+                    const description= DOMPurify.sanitize(item.fields.description);
                     htmlString += `
                     <div class="relative max-w-sm bg-gray-300 shadow-xl rounded-lg overflow-hidden text-white p-6 border-2 border-black">
-                        <div class="${item.fields.stock === 0 ? "blur-sm" : ""}">
+                        <div>
                             <!-- Category -->
                             <div class="inline-block bg-purple-200 text-xs px-3 py-2 uppercase font-semibold rounded-full mb-3"><h4 class="text-black">Category: ${item.fields.category}</h4></div>
                             
                             <!-- Product Name -->
-                            <h2 class="text-2xl font-bold mb-2 text-black">${item.fields.name}</h2>
+                            <h2 class="text-2xl font-bold mb-2 text-black">${name}</h2>
                             
                             <!-- Price -->
                             <div class="text-lg mb-3 text-gray-800">Rp${item.fields.price},00</div>
                             
                             <!-- Description -->
                             <p class="text-gray-900 text-sm mb-4">
-                            ${item.fields.description}
+                            ${description}
                             </p>
                             <br>
 
@@ -209,7 +212,7 @@
 
                     if (item.fields.stock == 0) {
                         htmlString += `
-                        <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
+                        <div class="flex items-center justify-center bg-black bg-opacity-50 z-10 top-0 left-0 rounded-lg">
                             <span class="text-white text-3xl font-bold">NOT AVAILABLE</span>
                         </div>
                         `

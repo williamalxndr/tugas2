@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from main.views import show_main, create_new_product, show_xml, show_json, show_xml_by_id, show_json_by_id, register, login_user, logout_user, delete_product, edit_product, show_product, show_product_by_category, add_new_product_ajax
+from main.views import show_main, create_new_product, show_xml, show_json, show_xml_by_id, show_json_by_id, register, login_user, logout_user, delete_product, edit_product, show_product, show_product_by_category, add_new_product_ajax, show_json_by_category
 
 app_name = "main"
 
@@ -20,4 +20,5 @@ urlpatterns = [
     path("show_product/", show_product, name="show_product"),
     path("show_product/<str:category>/", show_product_by_category, name="show_product_by_category"),
     path("create-new-product-ajax", add_new_product_ajax, name="add_new_product_ajax"),
+    path("json_by_category/<str:category>/", show_json_by_category, name="show_json_by_category"),
 ]

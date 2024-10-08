@@ -151,3 +151,9 @@ def add_new_product_ajax(request):
     new_product.save()
 
     return HttpResponse(b"CREATED", status=201)
+
+def show_json_by_category(request, category):
+    data = Product.objects.filter(user=request.user)
+    if category != "all":
+        data = data.filter(category=category)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")

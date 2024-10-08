@@ -69,3 +69,19 @@ TUGAS 5
 
 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
     Saya menggunakan dokumentasi tailwind untuk mengetahui class class yang dapat dipakai dan kegunaannya, dari youtube untuk melihat contoh implementasi, melihat tutorial untuk melihat template nya, dan menggunakan ai untuk proses debugging.
+
+TUGAS 6
+1.  Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
+    Javascript berguna agar membuat web lebih interaktif, sebagai contoh javascript dapat membuat efek animasi, efek pop up, dll. Kemudian, javascript juga dapat berguna untuk memanipulasi DOM, sehingga dapat menambah, menghapus, atau mengubah suatu elemen html sebagai contoh dapat membuat suatu event listener pada suatu elemen html. Javascript juga berguna untuk debugging dalam proses pengembangan website, menggunakan console. Lalu, dengan javascript, website dapat mengimplementasikan komunikasi asinkron dengan AJAX, dengan AJAX, data dapat dikirim ke server dan dikembalikan tanpa perlu me-reload seluruh halaman.
+    
+2.  Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?
+    Fungsi penggunaan await ketika kita menggunakan fetch() adalah untuk menunggu sampai promise yang dihasilkan oleh fetch() selesai atau terpenuhi (entah berhasil atau gagal) sebelum melanjutkan eksekusi ke baris kode berikutnya. fetch() adalah fungsi asynchronous yang mengembalikan sebuah promise. Dengan await, kita dapat menangani hasil dari promise tersebut secara sinkron. Jika kita tidak menggunakan await, maka fetch() akan mengembalikan promise secara langsung (bukan data yang diinginkan), dan kode berikutnya akan langsung dijalankan tanpa menunggu hasil dari request.
+
+3.  Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST
+    Django mewajibkan kita untuk menggunakan csrf token setiap kali mensubmit form. Namun pada AJAX POST kita, kita tidak menggunakan csrf_token, agar kita tetap bisa mensubmit form tanpa csrf_token, kita memerlukan decorator csrf_exempt.
+
+4.  Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+    Frontend dapat dimanipulasi pengguna, pengguna dapat mengubah kode javascript di browser dan menonaktifkan javascript untuk melakukan serangan cross-site scripting(XSS) atau serangan penyalahgunaan data input lainnya. Sedangkan backend tidak dapat diakses langsung atau diubah oleh pengguna.
+
+5.  Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+    Menggunakan tutorial asynchronous javascript di youtube dan slides untuk memahami konsep, stackoverflow dan ai untuk debugging.

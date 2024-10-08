@@ -130,12 +130,14 @@ def show_product_by_category(request, category):
 
     return render(request, "show_product.html", context)
 
+@csrf_exempt
+@require_POST
 def add_new_product_ajax(request):
     name = request.POST.get("name")
     price = request.POST.get("price")
     description = request.POST.get("description")
     stock = request.POST.get("stock")
-    ratings = request.POST.get("ratings")
+    ratings = float(request.POST.get("ratings"))
     category = request.POST.get("category")
     user = request.user
 
